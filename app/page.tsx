@@ -1,231 +1,345 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from 'react';
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Star, Music, Phone, Mail, MapPin, Facebook, Instagram, Twitter } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 
-const Home = () => {
+export default function PercussionLandingPage() {
+  const productCategories = [
+    {
+      name: "Cajon",
+      description: "Versatile box drums perfect for acoustic sessions",
+      image: "/placeholder.svg?height=300&width=400",
+      price: "From $89",
+    },
+    {
+      name: "Darbuka",
+      description: "Traditional Middle Eastern goblet drums",
+      image: "/placeholder.svg?height=300&width=400",
+      price: "From $65",
+    },
+    {
+      name: "Guitars",
+      description: "Acoustic and electric guitars for every style",
+      image: "/placeholder.svg?height=300&width=400",
+      price: "From $199",
+    },
+    {
+      name: "Violins",
+      description: "Professional and student violins with rich tone",
+      image: "/placeholder.svg?height=300&width=400",
+      price: "From $149",
+    },
+    {
+      name: "Melodicas",
+      description: "Portable wind instruments with keyboard layout",
+      image: "/placeholder.svg?height=300&width=400",
+      price: "From $45",
+    },
+  ]
+
+  const testimonials = [
+    {
+      name: "Sarah Martinez",
+      role: "Professional Percussionist",
+      content:
+        "The cajon I bought here has incredible sound quality. It's become my go-to instrument for studio sessions.",
+      rating: 5,
+      image: "/placeholder.svg?height=80&width=80",
+    },
+    {
+      name: "Ahmed Hassan",
+      role: "World Music Enthusiast",
+      content: "Amazing selection of darbukas! The craftsmanship is outstanding and the customer service is top-notch.",
+      rating: 5,
+      image: "/placeholder.svg?height=80&width=80",
+    },
+    {
+      name: "Emily Chen",
+      role: "Music Teacher",
+      content:
+        "I've purchased several instruments for my students. Great quality at affordable prices. Highly recommend!",
+      rating: 5,
+      image: "/placeholder.svg?height=80&width=80",
+    },
+  ]
+
   return (
-    <div className="min-h-screen">
-      {/* Header/Navigation */}
-      <header className="bg-gray-800 text-white">
-        <div className="container mx-auto px-4 py-5 flex justify-between items-center">
-          <div className="text-2xl font-bold">Bera.lk</div>
-          <nav className="hidden md:block">
-            <ul className="flex space-x-6">
-              <li><Link href="/" className="hover:text-orange-400">Home</Link></li>
-              <li><Link href="/shop" className="hover:text-orange-400">Shop</Link></li>
-              <li><Link href="/about" className="hover:text-orange-400">About</Link></li>
-              <li><Link href="/contact" className="hover:text-orange-400">Contact</Link></li>
-            </ul>
-          </nav>
-          <div className="flex items-center space-x-4">
-            <button className="bg-orange-600 text-white px-4 py-2 rounded-full">
-              Cart (0)
-            </button>
-            <button className="md:hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center space-x-2">
+              <Music className="h-8 w-8 text-orange-600" />
+              <span className="text-2xl font-bold text-gray-900">Bera.lk</span>
+            </div>
+            <nav className="hidden md:flex items-center space-x-8">
+              <Link href="#products" className="text-gray-700 hover:text-orange-600 transition-colors">
+                Instruments
+              </Link>
+              <Link href="#about" className="text-gray-700 hover:text-orange-600 transition-colors">
+                About
+              </Link>
+              <Link href="#testimonials" className="text-gray-700 hover:text-orange-600 transition-colors">
+                Reviews
+              </Link>
+              <Link href="#contact" className="text-gray-700 hover:text-orange-600 transition-colors">
+                Contact
+              </Link>
+            </nav>
+            <Button className="bg-orange-600 hover:bg-orange-700">Cart (0)</Button>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-amber-900 to-amber-700 text-white">
-        <div className="container mx-auto px-4 py-24 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-10 md:mb-0">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">DISCOVER YOUR RHYTHM</h1>
-            <p className="text-xl mb-8">Premium Hand-crafted Percussion Instruments</p>
-            <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full">
-              SHOP NOW
-            </button>
-          </div>
-          <div className="md:w-1/2 relative">
-            <div className="relative h-64 md:h-96 w-full">
-              {/* Placeholder for hero image - replace with your actual image */}
-              <div className="absolute inset-0 bg-amber-800 bg-opacity-50 rounded-lg flex items-center justify-center">
-                <p className="text-lg font-semibold">Djembe Image Placeholder</p>
+      <section className="relative bg-gradient-to-br from-orange-50 to-amber-50 py-20 lg:py-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <Badge className="bg-orange-100 text-orange-800 hover:bg-orange-200">✨ New Arrivals Available</Badge>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                  Discover Your
+                  <span className="text-orange-600 block">Perfect Sound</span>
+                </h1>
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  From traditional percussion to modern strings, find premium instruments that inspire your musical
+                  journey. Crafted for musicians, by musicians.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-lg px-8 py-3">
+                  Shop Now
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-lg px-8 py-3 border-orange-600 text-orange-600 hover:bg-orange-50"
+                >
+                  View Catalog
+                </Button>
+              </div>
+              <div className="flex items-center space-x-8 text-sm text-gray-600">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span>Free Shipping Over $100</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <span>30-Day Returns</span>
+                </div>
+              </div>
+            </div>
+            <div className="relative">
+              <Image
+                src="/placeholder.svg?height=600&width=600"
+                alt="Musical instruments collection"
+                width={600}
+                height={600}
+                className="rounded-2xl shadow-2xl"
+                priority
+              />
+              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg">
+                <div className="flex items-center space-x-2">
+                  <Star className="h-5 w-5 text-yellow-400 fill-current" />
+                  <span className="font-semibold">4.9/5</span>
+                  <span className="text-gray-600">from 2,000+ reviews</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Products Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">FEATURED INSTRUMENTS</h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Djembe Card */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
-              <div className="h-48 bg-amber-100 flex items-center justify-center">
-                {/* Replace with actual image */}
-                <div className="text-amber-800 text-lg">Djembe Image</div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">Djembe</h3>
-                <p className="text-gray-600 mb-4">Traditional West African drum known for its versatile sounds.</p>
-                <button className="text-orange-600 font-semibold hover:text-orange-800">
-                  View Collection →
-                </button>
-              </div>
-            </div>
+      {/* Product Categories */}
+      <section id="products" className="py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Explore Our Instruments</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Discover our carefully curated collection of premium instruments, each selected for exceptional quality
+              and sound.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {productCategories.map((category, index) => (
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+                <div className="relative overflow-hidden rounded-t-lg">
+                  <Image
+                    src={category.image || "/placeholder.svg"}
+                    alt={category.name}
+                    width={400}
+                    height={300}
+                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <Badge className="bg-orange-600 text-white">{category.price}</Badge>
+                  </div>
+                </div>
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{category.name}</h3>
+                  <p className="text-gray-600 mb-4">{category.description}</p>
+                  <Button className="w-full bg-orange-600 hover:bg-orange-700">View Collection</Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Cajon Card */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
-              <div className="h-48 bg-amber-100 flex items-center justify-center">
-                {/* Replace with actual image */}
-                <div className="text-amber-800 text-lg">Cajon Image</div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">Cajon</h3>
-                <p className="text-gray-600 mb-4">Box-shaped percussion instrument originating from Peru.</p>
-                <button className="text-orange-600 font-semibold hover:text-orange-800">
-                  View Collection →
-                </button>
-              </div>
-            </div>
-
-            {/* Darbuka Card */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
-              <div className="h-48 bg-amber-100 flex items-center justify-center">
-                {/* Replace with actual image */}
-                <div className="text-amber-800 text-lg">Darbuka Image</div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">Darbuka</h3>
-                <p className="text-gray-600 mb-4">Goblet drum from the Middle East with rich, resonant tones.</p>
-                <button className="text-orange-600 font-semibold hover:text-orange-800">
-                  View Collection →
-                </button>
-              </div>
+      {/* Promotional Banner */}
+      <section className="py-16 bg-gradient-to-r from-orange-600 to-amber-600">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center text-white">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">🎵 Limited Time Offer</h2>
+            <p className="text-xl mb-6 opacity-90">Get 25% off on all percussion instruments this month!</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button size="lg" className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-3">
+                Shop Sale Items
+              </Button>
+              <span className="text-lg font-semibold">
+                Use code: <span className="bg-white/20 px-3 py-1 rounded">RHYTHM25</span>
+              </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">WHY CHOOSE US</h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="text-orange-600 text-4xl mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2">Premium Quality</h3>
-              <p className="text-gray-600">Handcrafted instruments made with authentic materials.</p>
-            </div>
-            
-            <div className="text-center p-6">
-              <div className="text-orange-600 text-4xl mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2">Secure Payment</h3>
-              <p className="text-gray-600">Multiple payment options with encrypted transactions.</p>
-            </div>
-            
-            <div className="text-center p-6">
-              <div className="text-orange-600 text-4xl mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2">Fast Shipping</h3>
-              <p className="text-gray-600">Worldwide delivery with tracking information.</p>
-            </div>
+      {/* Testimonials */}
+      <section id="testimonials" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What Musicians Say</h2>
+            <p className="text-xl text-gray-600">Trusted by professionals and enthusiasts worldwide</p>
           </div>
-        </div>
-      </section>
-
-      {/* Newsletter */}
-      <section className="py-16 bg-amber-900 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">JOIN OUR RHYTHM COMMUNITY</h2>
-          <p className="mb-8 max-w-2xl mx-auto">Subscribe to our newsletter for exclusive offers, new arrivals, and percussion tips.</p>
-          
-          <form className="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="flex-grow px-4 py-3 rounded-full text-gray-800 focus:outline-none"
-            />
-            <button className="bg-orange-600 hover:bg-orange-700 px-6 py-3 rounded-full font-bold">
-              SUBSCRIBE
-            </button>
-          </form>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="bg-white border-0 shadow-md">
+                <CardContent className="p-8">
+                  <div className="flex items-center mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 mb-6 italic">"{testimonial.content}"</p>
+                  <div className="flex items-center">
+                    <Image
+                      src={testimonial.image || "/placeholder.svg"}
+                      alt={testimonial.name}
+                      width={80}
+                      height={80}
+                      className="w-12 h-12 rounded-full mr-4"
+                    />
+                    <div>
+                      <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                      <p className="text-gray-600 text-sm">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4">Bera.lk</h3>
-              <p className="text-gray-400">Your premier destination for authentic percussion instruments.</p>
-            </div>
-            
-            <div>
-              <h4 className="font-bold mb-4">SHOP</h4>
-              <ul className="space-y-2">
-                <li><Link href="/shop/djembe" className="text-gray-400 hover:text-white">Djembe</Link></li>
-                <li><Link href="/shop/cajon" className="text-gray-400 hover:text-white">Cajon</Link></li>
-                <li><Link href="/shop/darbuka" className="text-gray-400 hover:text-white">Darbuka</Link></li>
-                <li><Link href="/shop/accessories" className="text-gray-400 hover:text-white">Accessories</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-bold mb-4">COMPANY</h4>
-              <ul className="space-y-2">
-                <li><Link href="/about" className="text-gray-400 hover:text-white">About Us</Link></li>
-                <li><Link href="/contact" className="text-gray-400 hover:text-white">Contact</Link></li>
-                <li><Link href="/blog" className="text-gray-400 hover:text-white">Blog</Link></li>
-                <li><Link href="/faq" className="text-gray-400 hover:text-white">FAQ</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-bold mb-4">CONNECT</h4>
+      <footer id="contact" className="bg-gray-900 text-white py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <Music className="h-8 w-8 text-orange-600" />
+                <span className="text-2xl font-bold">RhythmCraft</span>
+              </div>
+              <p className="text-gray-400">
+                Your trusted partner for premium musical instruments. Inspiring musicians since 2010.
+              </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                  </svg>
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.1 10.1 0 01-3.127 1.184 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                  </svg>
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
-                  </svg>
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                  </svg>
-                </a>
+                <Facebook className="h-6 w-6 text-gray-400 hover:text-orange-600 cursor-pointer transition-colors" />
+                <Instagram className="h-6 w-6 text-gray-400 hover:text-orange-600 cursor-pointer transition-colors" />
+                <Twitter className="h-6 w-6 text-gray-400 hover:text-orange-600 cursor-pointer transition-colors" />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li>
+                  <Link href="#" className="hover:text-orange-600 transition-colors">
+                    All Instruments
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-orange-600 transition-colors">
+                    New Arrivals
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-orange-600 transition-colors">
+                    Sale Items
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-orange-600 transition-colors">
+                    Gift Cards
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Customer Care</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li>
+                  <Link href="#" className="hover:text-orange-600 transition-colors">
+                    Shipping Info
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-orange-600 transition-colors">
+                    Returns
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-orange-600 transition-colors">
+                    Size Guide
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-orange-600 transition-colors">
+                    FAQ
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
+              <div className="space-y-3 text-gray-400">
+                <div className="flex items-center space-x-3">
+                  <Phone className="h-5 w-5 text-orange-600" />
+                  <span>+1 (555) 123-4567</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Mail className="h-5 w-5 text-orange-600" />
+                  <span>hello@rhythmcraft.com</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <MapPin className="h-5 w-5 text-orange-600" />
+                  <span>123 Music Street, NY 10001</span>
+                </div>
               </div>
             </div>
           </div>
-          
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Bera.lk. All rights reserved.</p>
+
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+            <p>&copy; {new Date().getFullYear()} RhythmCraft. All rights reserved.</p>
           </div>
         </div>
       </footer>
     </div>
-  );
-};
-
-export default Home;
+  )
+}
