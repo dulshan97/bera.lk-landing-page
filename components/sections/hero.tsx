@@ -41,13 +41,13 @@ export default function Hero({
               <p className="text-xl text-gray-600 leading-relaxed">{description}</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-lg px-8 py-3">
+              <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-lg px-8 py-3 cursor-pointer">
                 {primaryButtonText}
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-3 border-orange-600 text-orange-600 hover:bg-orange-50"
+                className="text-lg px-8 py-3 border-orange-600 text-orange-600 hover:bg-orange-50 cursor-pointer"
               >
                 {secondaryButtonText}
               </Button>
